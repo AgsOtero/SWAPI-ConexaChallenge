@@ -80,7 +80,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -107,7 +106,6 @@
                 </configuration>
                 <executions>
                     <execution>
-                        <id>repackage</id>
                         <goals>
                             <goal>repackage</goal>
                         </goals>
@@ -116,5 +114,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
