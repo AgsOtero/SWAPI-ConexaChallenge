@@ -30,6 +30,4 @@ public class Java8StarwarsApiApplication {
                     .anyRequest().authenticated();
         }
     }
-
-
 }
