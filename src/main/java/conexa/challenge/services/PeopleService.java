@@ -5,7 +5,7 @@ import conexa.challenge.model.PeopleListDTO;
 
 public interface PeopleService {
 
-    PeopleListDTO getPeople(Integer page, Integer size);
+    PeopleListDTO getPeople(Integer page, Integer limit);
 
     PeopleDTO getPeopleById(int id);
 

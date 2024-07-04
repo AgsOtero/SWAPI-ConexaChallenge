@@ -19,8 +19,8 @@ public class PeopleController {
 
     @GetMapping
     public ResponseEntity<PeopleListDTO> getAllPeople(@RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
-                                                      @RequestParam(value = "size", required = false, defaultValue = "10") Integer size) {
-        return new ResponseEntity<>(peopleService.getPeople(page, size), HttpStatus.OK);
+                                                      @RequestParam(value = "size", required = false, defaultValue = "10") Integer limit) {
+        return new ResponseEntity<>(peopleService.getPeople(page, limit), HttpStatus.OK);
     }
 
     @GetMapping("/id/{id}")
