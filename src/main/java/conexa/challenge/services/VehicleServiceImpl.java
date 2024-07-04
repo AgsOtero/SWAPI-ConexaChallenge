@@ -13,10 +13,16 @@ import java.util.Map;
 @Service
 public class VehicleServiceImpl implements VehicleService {
 
+    private final HttpRequestUtil httpRequestUtil;
+
+    public VehicleServiceImpl(HttpRequestUtil httpRequestUtil) {
+        this.httpRequestUtil = httpRequestUtil;
+    }
+
     @Override
     public VehicleListDTO getVehicles(int page, int limit) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("vehicles/?page=" + page + "&limit=" + limit,
+                httpRequestUtil.makeGetRequest("vehicles/?page=" + page + "&limit=" + limit,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
 
@@ -38,7 +44,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public VehicleDTO getVehicleById(int id) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("vehicles/" + id,
+                httpRequestUtil.makeGetRequest("vehicles/" + id,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
         return getVehicleDTO(response, null);
@@ -47,7 +53,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public VehicleDTO getVehicleByName(String name) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("vehicles/?name=" + name,
+                httpRequestUtil.makeGetRequest("vehicles/?name=" + name,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
         return getVehicleDTO(response, name);
@@ -56,7 +62,7 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public VehicleDTO getVehicleByModel(String model) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("vehicles/?model=" + model,
+                httpRequestUtil.makeGetRequest("vehicles/?model=" + model,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
         return getVehicleDTO(response, model);
@@ -81,10 +87,10 @@ public class VehicleServiceImpl implements VehicleService {
         }
         Map<String, Object> properties;
         if (modelOrName != null) {
-            properties = HttpRequestUtil.getListMap(body);
+            properties = httpRequestUtil.getListMap(body);
             assert properties != null;
         } else {
-            properties = HttpRequestUtil.getObjectMap(body);
+            properties = httpRequestUtil.getObjectMap(body);
         }
         return VehicleDTOMapper.mapVehicleDTO(properties);
     }

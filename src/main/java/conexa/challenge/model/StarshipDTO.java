@@ -12,6 +12,7 @@ import java.util.List;
 @Builder
 public class StarshipDTO {
 
+    private int id;
     private String name;
     private String model;
     private String starshipClass;

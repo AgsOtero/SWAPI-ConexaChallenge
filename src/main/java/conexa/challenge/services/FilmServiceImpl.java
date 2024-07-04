@@ -15,10 +15,17 @@ import java.util.Map;
 @Service
 public class FilmServiceImpl implements FilmService {
 
+    private final HttpRequestUtil httpRequestUtil;
+
+    public FilmServiceImpl(HttpRequestUtil httpRequestUtil) {
+        this.httpRequestUtil = httpRequestUtil;
+    }
+
+
     @Override
     public List<FilmDTO> getAllFilms() {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("films",
+                httpRequestUtil.makeGetRequest("films",
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
 
@@ -44,7 +51,7 @@ public class FilmServiceImpl implements FilmService {
     public FilmDTO getFilmById(int id) {
 
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("films/" + id,
+                httpRequestUtil.makeGetRequest("films/" + id,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
 
@@ -55,7 +62,7 @@ public class FilmServiceImpl implements FilmService {
     public FilmDTO getFilmByTitle(String title) {
 
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("films/?title=" + title,
+                httpRequestUtil.makeGetRequest("films/?title=" + title,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
         return getFilmDTO(response, title);
@@ -80,11 +87,9 @@ public class FilmServiceImpl implements FilmService {
         }
         Map<String, Object> properties;
         if (title != null) {
-            properties = HttpRequestUtil.getListMap(body);
+            properties = httpRequestUtil.getListMap(body);
             assert properties != null;
-        } else {
-            properties = HttpRequestUtil.getObjectMap(body);
-        }
+        } else properties = httpRequestUtil.getObjectMap(body);
         return FilmDTOMapper.mapFilmDTO(properties);
     }
 

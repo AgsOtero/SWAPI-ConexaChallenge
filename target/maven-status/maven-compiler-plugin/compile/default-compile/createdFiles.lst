@@ -7,14 +7,17 @@ conexa\challenge\services\VehicleServiceImpl$1.class
 conexa\challenge\services\util\PeopleDTOMapper.class
 conexa\challenge\model\StarshipListDTO$StarshipListDTOBuilder.class
 conexa\challenge\controller\PeopleController.class
+conexa\challenge\model\CommonListResult$CommonListResultBuilder.class
 conexa\challenge\services\PeopleServiceImpl$3.class
 conexa\challenge\services\VehicleServiceImpl$4.class
 conexa\challenge\Java8StarwarsApiApplication$WebSecurityConfig.class
 conexa\challenge\services\PeopleService.class
 conexa\challenge\services\FilmServiceImpl$1.class
 conexa\challenge\services\util\StarshipDTOMapper.class
+conexa\challenge\model\PeopleListDTO$PeopleListDTOBuilder.class
 conexa\challenge\services\FilmServiceImpl.class
 conexa\challenge\controller\FilmController.class
+security\JWTAuthorizationFilter.class
 conexa\challenge\services\FilmService.class
 conexa\challenge\Java8StarwarsApiApplication.class
 conexa\challenge\services\StarshipServiceImpl$4.class
@@ -42,7 +45,6 @@ conexa\challenge\services\StarshipServiceImpl$2.class
 conexa\challenge\model\VehicleDTO$VehicleDTOBuilder.class
 conexa\challenge\services\PeopleServiceImpl.class
 conexa\challenge\controller\VehicleController.class
-conexa\challenge\security\JWTAuthorizationFilter.class
 conexa\challenge\controller\UserController.class
 conexa\challenge\model\StarshipDTO$StarshipDTOBuilder.class
 conexa\challenge\model\FilmDTO.class

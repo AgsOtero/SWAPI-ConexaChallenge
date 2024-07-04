@@ -29,7 +29,7 @@ public class HttpRequestUtil {
 
     private static final RestTemplate restTemplate = new RestTemplate();
 
-    public static <T> ResponseEntity<T> makeGetRequest(
+    public  <T> ResponseEntity<T> makeGetRequest(
             String endpoint,
             ParameterizedTypeReference<T> responseType) {
 
@@ -55,12 +55,12 @@ public class HttpRequestUtil {
      * @return
      */
 
-    public static Map<String, Object> getObjectMap(Map<String, Object> body) {
+    public  Map<String, Object> getObjectMap(Map<String, Object> body) {
         Map<String, Object> result = (Map<String, Object>) body.get("result");
         return (Map<String, Object>) result.get("properties");
     }
 
-    public static Map<String, Object> getListMap(Map<String, Object> body) {
+    public  Map<String, Object> getListMap(Map<String, Object> body) {
         List<Map<String, Object>> resultList = (List<Map<String, Object>>) body.get("result");
         if (resultList.isEmpty()) {
             return null;

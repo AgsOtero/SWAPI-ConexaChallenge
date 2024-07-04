@@ -9,6 +9,7 @@ E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\model\Veh
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\services\FilmServiceImpl.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\services\util\FilmDTOMapper.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\services\util\HttpRequestUtil.java
+E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\security\JWTAuthorizationFilter.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\model\PeopleDTO.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\Java8StarwarsApiApplication.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\model\UserDTO.java
@@ -18,7 +19,6 @@ E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\services\
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\model\StarshipListDTO.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\controller\FilmController.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\services\util\PeopleDTOMapper.java
-E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\security\JWTAuthorizationFilter.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\controller\StarshipController.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\controller\UserController.java
 E:\Tuto\challenge\SWAPI-ConexaChallenge\src\main\java\conexa\challenge\controller\VehicleController.java

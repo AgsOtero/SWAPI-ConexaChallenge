@@ -16,7 +16,7 @@ public class FilmDTOMapper {
                 .created((String) properties.get("created"))
                 .producer((String) properties.get("producer"))
                 .releaseDate((String) properties.get("release_date"))
-                .episodeId((Integer.parseInt(properties.get("episode_id").toString())))
+                .episodeId(properties.get("episode_id") != null ? Integer.parseInt(properties.get("episode_id").toString()) : null)
                 .openingCrawl((String) properties.get("opening_crawl"))
                 .vehicles((List<String>) properties.get("vehicles"))
                 .characters((List<String>) properties.get("characters"))

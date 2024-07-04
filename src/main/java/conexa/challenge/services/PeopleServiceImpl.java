@@ -13,10 +13,16 @@ import java.util.Map;
 @Service
 public class PeopleServiceImpl implements PeopleService {
 
+    private final HttpRequestUtil httpRequestUtil;
+
+    public PeopleServiceImpl(HttpRequestUtil httpRequestUtil) {
+        this.httpRequestUtil = httpRequestUtil;
+    }
+
     @Override
     public PeopleListDTO getPeople(Integer page, Integer limit) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("people/?page=" + page + "&limit=" + limit,
+                httpRequestUtil.makeGetRequest("people/?page=" + page + "&limit=" + limit,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
 
@@ -36,7 +42,7 @@ public class PeopleServiceImpl implements PeopleService {
     @Override
     public PeopleDTO getPeopleById(int id) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("people/" + id,
+                httpRequestUtil.makeGetRequest("people/" + id,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
         return getPeopleDTO(response, null);
@@ -45,7 +51,7 @@ public class PeopleServiceImpl implements PeopleService {
     @Override
     public PeopleDTO getPeopleByName(String name) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("people/?name=" + name,
+                httpRequestUtil.makeGetRequest("people/?name=" + name,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
         return getPeopleDTO(response, name);
@@ -59,10 +65,10 @@ public class PeopleServiceImpl implements PeopleService {
         }
         Map<String, Object> properties;
         if (name != null) {
-            properties = HttpRequestUtil.getListMap(body);
+            properties = httpRequestUtil.getListMap(body);
             assert properties != null;
         } else {
-            properties = HttpRequestUtil.getObjectMap(body);
+            properties = httpRequestUtil.getObjectMap(body);
         }
         return PeopleDTOMapper.mapPeopleDTO(properties);
     }

@@ -13,11 +13,18 @@ import java.util.Map;
 @Service
 public class StarshipServiceImpl implements StarshipService {
 
+    private final HttpRequestUtil httpRequestUtil;
+
+    public StarshipServiceImpl(HttpRequestUtil httpRequestUtil) {
+        this.httpRequestUtil = httpRequestUtil;
+    }
+
+
     @Override
     public StarshipListDTO getStarships(int page, int limit) {
 
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("starships/?page=" + page + "&limit=" + limit,
+                httpRequestUtil.makeGetRequest("starships/?page=" + page + "&limit=" + limit,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
 
@@ -37,17 +44,21 @@ public class StarshipServiceImpl implements StarshipService {
 
     @Override
     public StarshipDTO getStarshipById(int id) {
-        ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("starships/" + id,
-                        new ParameterizedTypeReference<Map<String, Object>>() {
-                        });
-        return getStarshipDTO(response, null);
+        try {
+            ResponseEntity<Map<String, Object>> response =
+                    httpRequestUtil.makeGetRequest("starships/" + id,
+                            new ParameterizedTypeReference<Map<String, Object>>() {
+                            });
+            return getStarshipDTO(response, null);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to retrieve starship with id " + id, e);
+        }
     }
 
     @Override
     public StarshipDTO getStarshipByName(String starshipName) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("starships/?name=" + starshipName,
+                httpRequestUtil.makeGetRequest("starships/?name=" + starshipName,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
         return getStarshipDTO(response, starshipName);
@@ -56,7 +67,7 @@ public class StarshipServiceImpl implements StarshipService {
     @Override
     public StarshipDTO getStarshipByModel(String model) {
         ResponseEntity<Map<String, Object>> response =
-                HttpRequestUtil.makeGetRequest("starships/?model=" + model,
+                httpRequestUtil.makeGetRequest("starships/?model=" + model,
                         new ParameterizedTypeReference<Map<String, Object>>() {
                         });
         return getStarshipDTO(response, model);
@@ -70,7 +81,7 @@ public class StarshipServiceImpl implements StarshipService {
      * Also, the response from the API changes if I use a parameter in the URL or not,
      * you will notice that if there's title, it returns a list, and if not an array
      *
-     * @param response **
+     * @param response    **
      * @param modelOrName **
      */
     private StarshipDTO getStarshipDTO(ResponseEntity<Map<String, Object>> response, String modelOrName) {
@@ -80,10 +91,10 @@ public class StarshipServiceImpl implements StarshipService {
         }
         Map<String, Object> properties;
         if (modelOrName != null) {
-            properties = HttpRequestUtil.getListMap(body);
+            properties = httpRequestUtil.getListMap(body);
             assert properties != null;
         } else {
-            properties = HttpRequestUtil.getObjectMap(body);
+            properties = httpRequestUtil.getObjectMap(body);
         }
         return StarshipDTOMapper.mapStarshipDTO(properties);
     }
