@@ -1,11 +1,8 @@
 # Java8StarwarsAPI
 
-Prueba Técnica Conexa
-
 ## Descripción
 
-Esta aplicación es una API RESTful desarrollada en Java utilizando Spring Boot. Proporciona información sobre personas, películas, naves espaciales y vehículos del universo de Star Wars.
-
+Esta aplicación es una API RESTful desarrollada en Java utilizando Spring Boot. Proporciona información sobre personas, películas, naves espaciales y vehículos del universo de Star Wars, obteniendo la informacion desde [SWAPI API](https://www.swapi.tech/documentation)
 ## Requisitos
 
 - Java 8
@@ -29,6 +26,8 @@ mvn clean package
 ```
 java -jar target/demo-0.0.1-SNAPSHOT.jar
 ```
+
+Por defecto, la app se levanta en [http://localhost:8080/](http://localhost:8080/)
 
 ## Uso
 
