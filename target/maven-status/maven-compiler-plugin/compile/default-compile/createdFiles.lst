@@ -1,4 +1,5 @@
 conexa\challenge\services\StarshipServiceImpl$1.class
+conexa\challenge\config\SwaggerConfig.class
 conexa\challenge\model\PeopleDTO.class
 conexa\challenge\model\StarshipListDTO.class
 conexa\challenge\model\PeopleDTO$PeopleDTOBuilder.class
