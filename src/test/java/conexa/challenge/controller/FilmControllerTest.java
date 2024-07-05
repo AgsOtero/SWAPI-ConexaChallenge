@@ -59,7 +59,7 @@ class FilmControllerTest {
     public void testGetFilms() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/film")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andDo(print())  // Esto imprimirá la respuesta para depuración
+                .andDo(print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(2)))

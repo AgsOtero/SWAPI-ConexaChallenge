@@ -3,6 +3,7 @@ package conexa.challenge.services;
 import conexa.challenge.model.VehicleDTO;
 import conexa.challenge.model.VehicleListDTO;
 import conexa.challenge.services.util.HttpRequestUtil;
+import conexa.challenge.services.utils.TestUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -64,7 +65,7 @@ class VehicleServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("vehicles/" + vehicleId), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getObjectMap(body)).thenReturn(properties);
 
         VehicleDTO vehicleDTO = vehicleService.getVehicleById(vehicleId);
@@ -83,7 +84,7 @@ class VehicleServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("vehicles/?name=" + name), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getListMap(body)).thenReturn(properties);
 
         VehicleDTO vehicleDTO = vehicleService.getVehicleByName(name);
@@ -102,7 +103,7 @@ class VehicleServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("vehicles/?model=" + model), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getListMap(body)).thenReturn(properties);
 
         VehicleDTO vehicleDTO = vehicleService.getVehicleByModel(model);
@@ -147,8 +148,4 @@ class VehicleServiceTest {
         return body;
     }
 
-    private Map<String, Object> extractProperties(Map<String, Object> body) {
-        Map<String, Object> result = (Map<String, Object>) body.get("result");
-        return (Map<String, Object>) result.get("properties");
-    }
 }

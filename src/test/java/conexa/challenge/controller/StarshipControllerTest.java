@@ -42,7 +42,6 @@ public class StarshipControllerTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        // Configurar los mocks para devolver datos de prueba
         CommonListResult result1 = CommonListResult.builder()
                 .uid(1)
                 .name("Starship1")
@@ -66,11 +65,6 @@ public class StarshipControllerTest {
                 .id(1)
                 .name("Starship1")
                 .model("Model1")
-                .build();
-        StarshipDTO starship2 = StarshipDTO.builder()
-                .id(2)
-                .name("Starship2")
-                .model("Model2")
                 .build();
 
         when(starshipService.getStarships(1, 10)).thenReturn(starshipListDTO);

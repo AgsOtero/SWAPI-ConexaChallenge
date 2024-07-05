@@ -3,6 +3,7 @@ package conexa.challenge.services;
 import conexa.challenge.model.StarshipDTO;
 import conexa.challenge.model.StarshipListDTO;
 import conexa.challenge.services.util.HttpRequestUtil;
+import conexa.challenge.services.utils.TestUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -66,7 +67,7 @@ class StarshipServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("starships/" + shipId), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getObjectMap(body)).thenReturn(properties);
 
         StarshipDTO starshipDTO = starshipService.getStarshipById(shipId);
@@ -85,7 +86,7 @@ class StarshipServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("starships/?name=" + name), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getListMap(body)).thenReturn(properties);
 
         StarshipDTO starshipDTO = starshipService.getStarshipByName(name);
@@ -104,7 +105,7 @@ class StarshipServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("starships/?model=" + model), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getListMap(body)).thenReturn(properties);
 
         StarshipDTO starshipDTO = starshipService.getStarshipByModel(model);
@@ -132,7 +133,6 @@ class StarshipServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("starships?name=" + shipName), any(ParameterizedTypeReference.class)))
                 .thenThrow(new RuntimeException("Failed request"));
 
-        // Verifica que se lance una excepción cuando el request falla
         assertThrows(RuntimeException.class, () -> starshipService.getStarshipByName(shipName));
     }
 
@@ -143,7 +143,6 @@ class StarshipServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("starships?name=" + shipModel), any(ParameterizedTypeReference.class)))
                 .thenThrow(new RuntimeException("Failed request"));
 
-        // Verifica que se lance una excepción cuando el request falla
         assertThrows(RuntimeException.class, () -> starshipService.getStarshipByModel(shipModel));
     }
 
@@ -182,10 +181,4 @@ class StarshipServiceTest {
 
         return body;
     }
-
-    private Map<String, Object> extractProperties(Map<String, Object> body) {
-        Map<String, Object> result = (Map<String, Object>) body.get("result");
-        return (Map<String, Object>) result.get("properties");
-    }
-
 }

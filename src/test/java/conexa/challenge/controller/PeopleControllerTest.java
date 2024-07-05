@@ -42,7 +42,6 @@ public class PeopleControllerTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        // Configurar los mocks para devolver datos de prueba
         CommonListResult result1 = CommonListResult.builder()
                 .uid(1)
                 .name("Person1")
@@ -73,20 +72,6 @@ public class PeopleControllerTest {
                 .skinColor("fair")
                 .homeworld("Earth")
                 .url("/people/1")
-                .created("2020-01-01")
-                .edited("2020-01-01")
-                .build();
-        PeopleDTO person2 = PeopleDTO.builder()
-                .name("Person2")
-                .birthYear("1990")
-                .eyeColor("green")
-                .gender("female")
-                .hairColor("brown")
-                .height("170")
-                .mass("65")
-                .skinColor("light")
-                .homeworld("Mars")
-                .url("/people/2")
                 .created("2020-01-01")
                 .edited("2020-01-01")
                 .build();

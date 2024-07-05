@@ -73,12 +73,12 @@ public class FilmServiceImpl implements FilmService {
      * This method was extracted to avoid duplicated code all over the calls,
      * checks for if the body of the response is null and then gets the properties
      * to map them in the DTO class.
-     *
+     * <p>
      * Also, the response from the API changes if I use a parameter in the URL or not,
      * you will notice that if there's title, it returns a list, and if not an array
      *
      * @param response **
-     * @param title **
+     * @param title    **
      */
     private FilmDTO getFilmDTO(ResponseEntity<Map<String, Object>> response, String title) {
         Map<String, Object> body = response.getBody();

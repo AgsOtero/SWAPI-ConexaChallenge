@@ -3,6 +3,7 @@ package conexa.challenge.services;
 import conexa.challenge.model.PeopleDTO;
 import conexa.challenge.model.PeopleListDTO;
 import conexa.challenge.services.util.HttpRequestUtil;
+import conexa.challenge.services.utils.TestUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -63,7 +64,7 @@ class PeopleServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("people/" + id), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getObjectMap(body)).thenReturn(properties);
 
         PeopleDTO PeopleDTO = peopleService.getPeopleById(id);
@@ -82,7 +83,7 @@ class PeopleServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("people/?name=" + name), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getListMap(body)).thenReturn(properties);
 
         PeopleDTO peopleDTO = peopleService.getPeopleByName(name);
@@ -125,10 +126,5 @@ class PeopleServiceTest {
         body.put("result", resultMap);
 
         return body;
-    }
-
-    private Map<String, Object> extractProperties(Map<String, Object> body) {
-        Map<String, Object> result = (Map<String, Object>) body.get("result");
-        return (Map<String, Object>) result.get("properties");
     }
 }

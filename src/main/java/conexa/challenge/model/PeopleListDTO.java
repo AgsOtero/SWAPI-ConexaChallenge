@@ -13,7 +13,6 @@ import java.util.List;
 @Builder
 public class PeopleListDTO {
 
-
     private int totalRecords;
     private int totalPages;
     private String previous;

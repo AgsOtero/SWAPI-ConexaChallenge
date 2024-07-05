@@ -2,6 +2,7 @@ package conexa.challenge.services;
 
 import conexa.challenge.model.FilmDTO;
 import conexa.challenge.services.util.HttpRequestUtil;
+import conexa.challenge.services.utils.TestUtil;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -11,7 +12,10 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -52,7 +56,7 @@ class FilmServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("films/" + filmId), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getObjectMap(body)).thenReturn(properties);
 
         FilmDTO filmDTO = filmService.getFilmById(filmId);
@@ -71,7 +75,7 @@ class FilmServiceTest {
         when(httpRequestUtil.makeGetRequest(eq("films/?title=" + title), any(ParameterizedTypeReference.class)))
                 .thenReturn(mockResponseEntity);
 
-        Map<String, Object> properties = extractProperties(body);
+        Map<String, Object> properties = TestUtil.extractProperties(body);
         when(httpRequestUtil.getListMap(body)).thenReturn(properties);
 
         FilmDTO filmDTO = filmService.getFilmByTitle(title);
@@ -113,8 +117,4 @@ class FilmServiceTest {
         return body;
     }
 
-    private Map<String, Object> extractProperties(Map<String, Object> body) {
-        Map<String, Object> result = (Map<String, Object>) body.get("result");
-        return (Map<String, Object>) result.get("properties");
-    }
 }

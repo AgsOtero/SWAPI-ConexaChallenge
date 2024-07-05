@@ -43,7 +43,6 @@ class VehicleControllerTest {
     void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        // Configurar los mocks para devolver datos de prueba
         CommonListResult result1 = CommonListResult.builder()
                 .uid(1)
                 .name("Vehicle1")
@@ -67,12 +66,6 @@ class VehicleControllerTest {
                 .id(1)
                 .name("Vehicle1")
                 .model("Model1")
-                .build();
-
-        VehicleDTO vehicle2 = VehicleDTO.builder()
-                .id(2)
-                .name("Vehicle2")
-                .model("Model2")
                 .build();
 
         when(vehicleService.getVehicles(1, 10)).thenReturn(vehicleListDTO);

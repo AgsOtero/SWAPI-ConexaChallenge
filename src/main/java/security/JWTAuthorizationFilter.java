@@ -45,11 +45,6 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
         return Jwts.parser().setSigningKey(SECRET.getBytes()).parseClaimsJws(jwtToken).getBody();
     }
 
-    /**
-     * Authentication method in Spring flow
-     *
-     * @param claims
-     */
     private void setUpSpringAuthentication(Claims claims) {
         @SuppressWarnings("unchecked")
         List<String> authorities = (List) claims.get("authorities");
