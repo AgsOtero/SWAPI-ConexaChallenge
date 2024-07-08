@@ -7,7 +7,9 @@ conexa\challenge\services\FilmServiceImpl$2.class
 conexa\challenge\services\VehicleServiceImpl$1.class
 conexa\challenge\services\util\PeopleDTOMapper.class
 conexa\challenge\model\StarshipListDTO$StarshipListDTOBuilder.class
+conexa\challenge\exception\ResourceNotFoundException.class
 conexa\challenge\controller\PeopleController.class
+conexa\challenge\exception\GlobalExceptionHandler.class
 conexa\challenge\model\CommonListResult$CommonListResultBuilder.class
 conexa\challenge\services\PeopleServiceImpl$3.class
 conexa\challenge\services\VehicleServiceImpl$4.class
@@ -49,6 +51,5 @@ conexa\challenge\controller\VehicleController.class
 conexa\challenge\controller\UserController.class
 conexa\challenge\model\StarshipDTO$StarshipDTOBuilder.class
 conexa\challenge\model\FilmDTO.class
-conexa\challenge\services\util\CommonListMapper.class
 conexa\challenge\services\PeopleServiceImpl$2.class
 conexa\challenge\services\VehicleServiceImpl$3.class

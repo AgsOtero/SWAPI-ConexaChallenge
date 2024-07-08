@@ -1,11 +1,13 @@
-conexa\challenge\services\StarshipServiceTest.class
 conexa\challenge\services\FilmServiceTest.class
+conexa\challenge\security\TestSecurityConfig.class
+conexa\challenge\services\StarshipServiceTest.class
 conexa\challenge\services\VehicleServiceTest.class
 conexa\challenge\controller\FilmControllerTest.class
+conexa\challenge\exception\GlobalExceptionHandlerTest.class
 conexa\challenge\controller\StarshipControllerTest.class
 conexa\challenge\services\PeopleServiceTest.class
 conexa\challenge\controller\PeopleControllerTest.class
 conexa\challenge\controller\UserControllerTest.class
 conexa\challenge\controller\VehicleControllerTest.class
+conexa\challenge\services\utils\TestUtil.class
 conexa\challenge\Java8StarwarsApiApplicationTests.class
-conexa\challenge\security\TestSecurityConfig.class
